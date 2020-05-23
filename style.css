@@ -17,3 +17,23 @@
   padding-left: 15px;
   padding-top: 15px;
 }*/
+
+.home-header-title-wrapper {
+  background-color: inherit;
+  margin-top: 250px; }
+  @media only screen and (max-width: 575px) {
+    .home-header-title-wrapper {
+      display: none; } }
+
+.header-content .flex-column {
+  margin-left: 35px; }
+
+.home-header-title {
+  font-family: "UCF Condensed Alt",sans-serif;
+  font-weight: 400;
+  font-size: 6rem;
+  text-shadow: 1px 1px 4px #000;
+  text-align: left !important; }
+
+ .fa-angle-double-down::before, .ucf-news-section {
+  display: none; }
