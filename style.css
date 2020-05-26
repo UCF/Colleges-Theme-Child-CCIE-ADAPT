@@ -20,7 +20,7 @@
 
 .home-header-title-wrapper {
   background-color: inherit;
-  margin-top: 250px; }
+  margin-top: 120px; }
   @media only screen and (max-width: 575px) {
     .home-header-title-wrapper {
       display: none; } }
@@ -31,9 +31,13 @@
 .home-header-title {
   font-family: "UCF Condensed Alt",sans-serif;
   font-weight: 400;
-  font-size: 6rem;
+  font-size: 3rem;
   text-shadow: 1px 1px 4px #000;
   text-align: left !important; }
 
  .fa-angle-double-down::before, .ucf-news-section {
   display: none; }
+
+.header-media-short {
+    max-height: 300px !important;
+}
