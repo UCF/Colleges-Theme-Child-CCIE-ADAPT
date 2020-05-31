@@ -22,6 +22,6 @@ jQuery(document).ready(function(){
 
     jQuery(".dataTables_filter input[type='search']")
           .addClass("form-control")
-          .attr("placeholder", "Search...");
+          .attr("placeholder", "Type here to search...");
 
 });
