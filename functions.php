@@ -26,7 +26,7 @@ function search_database_callback() {
   
     header("Content-Type: application/json"); 
   
-    if(!isset($_GET['categories'])){
+    if(!isset($_GET['categories']) && !isset($_GET['terms']) && !isset($_GET['tags'])){
       $args = array(
         'posts_per_page'   => -1,
         'post_type'        => 'post',
@@ -37,10 +37,21 @@ function search_database_callback() {
         'posts_per_page'   => -1,
         'post_type'        => 'post',
         'tax_query' => array(
+          'relation' => 'OR',
           array(
               'taxonomy' => 'category',
               'field' => 'term_id',        
               'terms' => $_GET['categories'],               
+          ),
+          array(
+              'taxonomy' => 'filter_terms',
+              'field' => 'term_id',        
+              'terms' => $_GET['terms'],               
+          ),
+          array(
+              'taxonomy' => 'post_tag',
+              'field' => 'term_id',        
+              'terms' => $_GET['tags'],               
           )
         )
       );
