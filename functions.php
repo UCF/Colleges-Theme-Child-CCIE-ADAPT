@@ -148,4 +148,9 @@ function create_filter_terms_hierarchical_taxonomy() {
  
 }
 
+add_action( 'wp_enqueue_scripts', '_remove_style', PHP_INT_MAX );
+function _remove_style() {
+    wp_dequeue_style( 'style' );
+}
+
 ?>
