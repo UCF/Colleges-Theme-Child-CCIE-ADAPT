@@ -7,13 +7,14 @@
 <?php get_header(); the_post(); ?>
 
 <div class="container mb-5 mt-3 mt-lg-5">
-	<article class="<?php echo $post->post_status; ?> post-list-item">
-		<?php the_content(); ?>
-	</article>
+    <article class="<?php echo $post->post_status; ?> post-list-item">
+        <?php the_content(); ?>
+    </article>
 
     <?php          
         $categories = get_categories( array(
             'orderby' => 'name',
+            'hide_empty' => false,
             'order'   => 'ASC'
         ));
         
@@ -34,15 +35,16 @@
             <!-- Search form -->
             <form id="search-form">
                 <div class="form-group form-inline">
-                    <input type="text" class="form-control" placeholder="search" aria-label="search">
+                    <div id="left-dt-search"></div>
+                    <!-- <input type="text" class="form-control" placeholder="search" aria-label="search" id="left-search">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="button" id="left-search-btn">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
-                    </div>
+                    </div> -->
                 </div>
                 
-                <h6 class="pt-3">Categries</h6>
+                <h6 class="pt-3">Categories</h6>
                 <?php foreach( $categories as $category ): ?>
                 <div class="form-check">
                     <input type="checkbox" name="categories[]" value="<?php echo $category->term_taxonomy_id; ?>">
