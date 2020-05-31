@@ -20,10 +20,13 @@
 
 .home-header-title-wrapper {
   background-color: inherit;
-  margin-top: 120px; }
-  @media only screen and (max-width: 575px) {
-    .home-header-title-wrapper {
-      display: none; } }
+  margin-top: 100px; }
+
+@media only screen and (max-width: 575px) {
+  .site-navbar .navbar-brand{
+    font-size:0.68rem;
+  }
+}
 
 .header-content .flex-column {
   margin-left: 35px; }
@@ -31,7 +34,7 @@
 .home-header-title {
   font-family: "UCF Condensed Alt",sans-serif;
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 3.5rem;
   text-shadow: 1px 1px 4px #000;
   text-align: left !important; }
 
@@ -40,4 +43,12 @@
 
 .header-media-short {
     max-height: 300px !important;
+}
+
+/*.dataTables_filter{
+  display:none;
+}*/
+
+.dataTables_wrapper .dataTables_length {
+    float: right !important;
 }
