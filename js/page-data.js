@@ -1,7 +1,9 @@
 jQuery(document).ready(function(){
+    
     var groupColumn = 4;
 
     var datatable = jQuery('#adapt-data').DataTable( {
+        //"order": [[ 0, "asc" ]],
         dom: 'lBfrtip',
         buttons: [
             // {
@@ -37,7 +39,7 @@ jQuery(document).ready(function(){
         "columnDefs": [
             { "visible": false, "targets": groupColumn }
         ],
-        "order": [[ groupColumn, 'asc' ]],
+        //"order": [[ groupColumn, 'asc' ]],
         "drawCallback": function ( settings ) {
             var api = this.api();
             var rows = api.rows( {page:'current'} ).nodes();
