@@ -36,6 +36,7 @@ function search_database_callback() {
       $args = array(
         'posts_per_page'   => -1,
         'post_type'        => 'post',
+        'post_status' => 'publish',
         'tax_query' => array(
           'relation' => 'OR',
           array(
@@ -53,32 +54,11 @@ function search_database_callback() {
               'field' => 'term_id',        
               'terms' => $_GET['tags'],               
           )
-        )
+        ),
+        // 'orderby' => 'date',
+        // 'order' => 'DESC'
       );
     }
-
-
-    // $args = array(
-    //   'posts_per_page'   => -1,
-    //   'post_type' => 'post',
-    //   'post_status' => 'publish',
-    //   'tax_query' => array(
-    //     'relation' => 'OR',
-    //     array(
-    //       'taxonomy' => 'post_tag',
-    //       'field' => 'slug',
-    //       'terms' => 'live',
-    //     ),
-    //     array(
-    //       'taxonomy' => 'category',
-    //       'field' => 'slug',
-    //       'terms' => 'candy',
-    //     ),
-    //   ),
-    //   'orderby' => 'date',
-    //   'order' => 'DESC'
-    // );
-
     
     $post_query = new WP_Query( $args );
     $totalData = $post_query->found_posts;
@@ -89,8 +69,25 @@ function search_database_callback() {
           while ($post_query->have_posts()) {
               $post_query->the_post();
               $nestedData = array();
-              $nestedData[] = "<a href='" . get_permalink() . "'>" . get_the_title() . "</a>";
-              $nestedData[] = wp_trim_words(strip_tags(get_the_excerpt()), 10);
+              $nestedData[] = "<a href='" . get_permalink() . "'><strong>" . get_the_title() . "</strong></a>";
+              $terms = get_the_terms(get_the_ID(), 'category' );
+              $category_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $category_list);
+
+              $terms = get_the_terms(get_the_ID(), 'filter_terms' );
+              $filter_term_list = array_map(function($term){return "<span class='small badge  badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $filter_term_list);
+
+              $terms = get_the_terms(get_the_ID(), 'post_tag' );
+              $filter_term_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $filter_term_list);
+
+              $str = wpautop( get_the_content() );
+              $str = substr( $str, 0, strpos( $str, '</p>' ) + 4 );
+              $str = strip_tags($str, '<a><strong><em>');
+
+              //$nestedData[] = wp_trim_words(strip_tags(get_the_excerpt()), 10);
+              $nestedData[] =  $str;
               $data[] = $nestedData;
           }
           wp_reset_query();

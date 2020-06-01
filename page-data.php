@@ -11,7 +11,8 @@
         <?php the_content(); ?>
     </article>
 
-    <?php          
+    <?php
+        
         $categories = get_categories( array(
             'orderby' => 'name',
             'hide_empty' => false,
@@ -28,8 +29,8 @@
             ));
     ?>
 
-    <div class="row mt-5">
-        <div class="col-4">
+    <div class="row mt-2">
+        <div class="col-3 mt-5">
             <h5>Filters and Search</h5>
             <!-- Search form -->
             <form id="search-form">
@@ -43,7 +44,7 @@
                     </div> -->
                 </div>
                 
-                <h6 class="pt-3">Categories</h6>
+                <h6 class="pt-3">Strategies</h6>
                 <?php foreach( $categories as $category ): ?>
                 <div class="form-check">
                     <input type="checkbox" name="categories[]" value="<?php echo $category->term_taxonomy_id; ?>">
@@ -73,19 +74,23 @@
             </form> 
         </div>
 
-        <div class="col-8">
+        <div class="col-9">
 
             <table id="adapt-data" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Excerpt</th>
+                        <th>Strategies</th>
+                        <th>Term</th>
+                        <th>Slug</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Title</th>
-                        <th>Excerpt</th>
+                        <th>Category</th>
+                        <th>Term</th>
+                        <th>Slug</th>
                     </tr>
                 </tfoot>
             </table>
