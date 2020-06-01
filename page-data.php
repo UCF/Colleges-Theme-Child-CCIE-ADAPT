@@ -29,7 +29,7 @@
             ));
     ?>
 
-    <div class="row pt-5">
+    <div class="row pt-3">
         <div class="col-3 mt-5">
             <h5>Filters and Search</h5>
             <!-- Search form -->
