@@ -13,6 +13,13 @@ function college_theme_child_style() {
     //load scripts
     if(strpos(trim( $_SERVER["REQUEST_URI"] , '/' ), 'database')) {
       wp_enqueue_script( 'dtscript', get_stylesheet_directory_uri() . '/js/jquery.dataTables.min.js', array ( 'jquery' ), true);
+      wp_enqueue_script( 'dtbtnscript', get_stylesheet_directory_uri() . '/js/dataTables.buttons.min.js', true);
+      wp_enqueue_script( 'dtflashscript', get_stylesheet_directory_uri() . '/js/buttons.flash.min.js', true);
+      wp_enqueue_script( 'dtszipscript', get_stylesheet_directory_uri() . '/js/jszip.min.js', true);
+      wp_enqueue_script( 'dtspdfscript', get_stylesheet_directory_uri() . '/js/pdfmake.min.js', true);
+      wp_enqueue_script( 'dtsvfsscript', get_stylesheet_directory_uri() . '/js/vfs_fonts.js', true);
+      wp_enqueue_script( 'dtshtml5script', get_stylesheet_directory_uri() . '/js/buttons.html5.min.js', true);
+      wp_enqueue_script( 'dtsprintscript', get_stylesheet_directory_uri() . '/js/buttons.print.min.js', true);
       wp_enqueue_script( 'search_database', get_stylesheet_directory_uri() . '/js/page-data.js', array ( 'dtscript' ), 1.1, true);
       wp_localize_script( 'search_database', 'ajax_url', admin_url('admin-ajax.php?action=search_database') );
     }
