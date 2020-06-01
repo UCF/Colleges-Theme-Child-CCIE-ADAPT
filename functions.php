@@ -76,7 +76,7 @@ function search_database_callback() {
           while ($post_query->have_posts()) {
               $post_query->the_post();
               $nestedData = array();
-              $nestedData[] = "<a href='" . get_permalink() . "'><strong>" . get_the_title() . "</strong></a>";
+              $nestedData[] = "<i class='fa fa-arrow-right text-info mr-2'></i><a href='" . get_permalink() . "'><strong>" . get_the_title() . "</strong></a>";
               $terms = get_the_terms(get_the_ID(), 'category' );
               $category_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
               $nestedData[] = implode(" ", $category_list);
