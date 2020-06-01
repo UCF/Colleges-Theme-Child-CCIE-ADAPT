@@ -29,7 +29,7 @@
             ));
     ?>
 
-    <div class="row mt-2">
+    <div class="row pt-5">
         <div class="col-3 mt-5">
             <h5>Filters and Search</h5>
             <!-- Search form -->
@@ -67,11 +67,13 @@
                             <?php echo $tag->name; ?>
                     </div>
                 <?php endforeach; ?>
-                
-                
-                
 
-            </form> 
+                <button type="reset" class="btn btn-primary btn-sm search-filter-reset mt-3"><i class="fa fa-times-circle"></i> Reset Search</button>
+            </form>
+
+            <div id="left-dt-export" class="pt-3"></div>
+            
+</button>
         </div>
 
         <div class="col-9">
