@@ -13,6 +13,13 @@ function college_theme_child_style() {
     //load scripts
     if(strpos(trim( $_SERVER["REQUEST_URI"] , '/' ), 'database')) {
       wp_enqueue_script( 'dtscript', get_stylesheet_directory_uri() . '/js/jquery.dataTables.min.js', array ( 'jquery' ), true);
+      wp_enqueue_script( 'dtbtnscript', get_stylesheet_directory_uri() . '/js/dataTables.buttons.min.js', true);
+      wp_enqueue_script( 'dtflashscript', get_stylesheet_directory_uri() . '/js/buttons.flash.min.js', true);
+      wp_enqueue_script( 'dtszipscript', get_stylesheet_directory_uri() . '/js/jszip.min.js', true);
+      wp_enqueue_script( 'dtspdfscript', get_stylesheet_directory_uri() . '/js/pdfmake.min.js', true);
+      wp_enqueue_script( 'dtsvfsscript', get_stylesheet_directory_uri() . '/js/vfs_fonts.js', true);
+      wp_enqueue_script( 'dtshtml5script', get_stylesheet_directory_uri() . '/js/buttons.html5.min.js', true);
+      wp_enqueue_script( 'dtsprintscript', get_stylesheet_directory_uri() . '/js/buttons.print.min.js', true);
       wp_enqueue_script( 'search_database', get_stylesheet_directory_uri() . '/js/page-data.js', array ( 'dtscript' ), 1.1, true);
       wp_localize_script( 'search_database', 'ajax_url', admin_url('admin-ajax.php?action=search_database') );
     }
@@ -36,6 +43,7 @@ function search_database_callback() {
       $args = array(
         'posts_per_page'   => -1,
         'post_type'        => 'post',
+        'post_status' => 'publish',
         'tax_query' => array(
           'relation' => 'OR',
           array(
@@ -53,32 +61,11 @@ function search_database_callback() {
               'field' => 'term_id',        
               'terms' => $_GET['tags'],               
           )
-        )
+        ),
+        // 'orderby' => 'date',
+        // 'order' => 'DESC'
       );
     }
-
-
-    // $args = array(
-    //   'posts_per_page'   => -1,
-    //   'post_type' => 'post',
-    //   'post_status' => 'publish',
-    //   'tax_query' => array(
-    //     'relation' => 'OR',
-    //     array(
-    //       'taxonomy' => 'post_tag',
-    //       'field' => 'slug',
-    //       'terms' => 'live',
-    //     ),
-    //     array(
-    //       'taxonomy' => 'category',
-    //       'field' => 'slug',
-    //       'terms' => 'candy',
-    //     ),
-    //   ),
-    //   'orderby' => 'date',
-    //   'order' => 'DESC'
-    // );
-
     
     $post_query = new WP_Query( $args );
     $totalData = $post_query->found_posts;
@@ -89,8 +76,25 @@ function search_database_callback() {
           while ($post_query->have_posts()) {
               $post_query->the_post();
               $nestedData = array();
-              $nestedData[] = "<a href='" . get_permalink() . "'>" . get_the_title() . "</a>";
-              $nestedData[] = wp_trim_words(strip_tags(get_the_excerpt()), 10);
+              $nestedData[] = "<i class='fa fa-arrow-right text-info mr-2'></i><a href='" . get_permalink() . "'><strong>" . get_the_title() . "</strong></a>";
+              $terms = get_the_terms(get_the_ID(), 'category' );
+              $category_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $category_list);
+
+              $terms = get_the_terms(get_the_ID(), 'filter_terms' );
+              $filter_term_list = array_map(function($term){return "<span class='small badge  badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $filter_term_list);
+
+              $terms = get_the_terms(get_the_ID(), 'post_tag' );
+              $filter_term_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              $nestedData[] = implode(" ", $filter_term_list);
+
+              $str = wpautop( get_the_content() );
+              $str = substr( $str, 0, strpos( $str, '</p>' ) + 4 );
+              $str = strip_tags($str, '<a><strong><em>');
+
+              //$nestedData[] = wp_trim_words(strip_tags(get_the_excerpt()), 10);
+              $nestedData[] =  $str;
               $data[] = $nestedData;
           }
           wp_reset_query();
