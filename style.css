@@ -43,7 +43,12 @@
 .home-header-title-wrapper{
   margin-top:120px;
   background-color: transparent;
-  margin-left: -225px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .home-header-title-wrapper{
+    margin-left: -225px;
+  }
 }
   
 
