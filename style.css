@@ -22,13 +22,7 @@
   background-color: inherit;
   margin-top: 100px; } */
 
-@media only screen and (max-width: 575px) {
-  .site-navbar .navbar-brand{
-    font-size:0.68rem;
-  }
-}
-
-/* .header-content .flex-column {
+ /* .header-content .flex-column {
   margin-left: 35px; }
 
 .home-header-title {
@@ -38,7 +32,28 @@
   text-shadow: 1px 1px 4px #000;
   text-align: left !important; } */
 
- .fa-angle-double-down::before, .ucf-news-section {
+.home-header-title {
+  font-family: "UCF Condensed Alt",sans-serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  text-shadow: 1px 1px 4px #000;
+  text-align: left !important; 
+  }
+  
+.home-header-title-wrapper{
+  margin-top:120px;
+  background-color: transparent;
+  margin-left: -225px;
+}
+  
+
+@media only screen and (max-width: 575px) {
+  .site-navbar .navbar-brand{
+    font-size:0.68rem;
+  }
+}
+
+.fa-angle-double-down::before, .ucf-news-section {
   display: none; }
 
 .header-media-short {
