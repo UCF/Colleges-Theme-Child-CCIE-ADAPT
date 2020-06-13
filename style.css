@@ -18,9 +18,15 @@
   padding-top: 15px;
 }*/
 
-.home-header-title-wrapper {
+/* .home-header-title-wrapper {
   background-color: inherit;
   margin-top: 100px; }
+
+@media only screen and (min-width: 775px){
+  .home-header-title-wrapper{
+    margin-left:120px;
+  }
+} */
 
 @media only screen and (max-width: 575px) {
   .site-navbar .navbar-brand{
@@ -31,12 +37,12 @@
 .header-content .flex-column {
   margin-left: 35px; }
 
-.home-header-title {
+/* .home-header-title {
   font-family: "UCF Condensed Alt",sans-serif;
   font-weight: 400;
   font-size: 3.5rem;
   text-shadow: 1px 1px 4px #000;
-  text-align: left !important; }
+  text-align: left !important; } */
 
  .fa-angle-double-down::before, .ucf-news-section {
   display: none; }
