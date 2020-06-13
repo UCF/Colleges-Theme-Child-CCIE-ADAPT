@@ -11,27 +11,6 @@
  Text Domain:  CCIE ADAPT Theme
 */
 
-/*.row-title {
-  width: 100%;
-  border-bottom: 1px dotted #999;
-  padding-left: 15px;
-  padding-top: 15px;
-}*/
-
-/* .home-header-title-wrapper {
-  background-color: inherit;
-  margin-top: 100px; } */
-
- /* .header-content .flex-column {
-  margin-left: 35px; }
-
-.home-header-title {
-  font-family: "UCF Condensed Alt",sans-serif;
-  font-weight: 400;
-  font-size: 3.5rem;
-  text-shadow: 1px 1px 4px #000;
-  text-align: left !important; } */
-
 .home-header-title {
   font-family: "UCF Condensed Alt",sans-serif;
   font-weight: 400;
@@ -50,7 +29,6 @@
     margin-left: -225px;
   }
 }
-  
 
 @media only screen and (max-width: 575px) {
   .site-navbar .navbar-brand{
