@@ -39,9 +39,9 @@
 .fa-angle-double-down::before, .ucf-news-section {
   display: none; }
 
-.header-media-short {
+/* .header-media-short {
     max-height: 300px !important;
-}
+} */
 
 /*.dataTables_filter{
   display:none;
