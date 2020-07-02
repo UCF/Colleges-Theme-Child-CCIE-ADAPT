@@ -159,6 +159,7 @@ function create_filter_terms_hierarchical_taxonomy() {
     'show_admin_column' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'filter_terms' ),
+    'show_in_rest' => true,
   ));
  
 }
