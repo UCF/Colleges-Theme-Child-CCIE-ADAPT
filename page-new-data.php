@@ -15,12 +15,13 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
         echo 'Please enter the wine name';
     }
     if (isset($_POST['content'])) {
-        $content = sanitize_textarea_field($_POST['content']);
+        //$content = sanitize_text_field( htmlentities($_POST['content']) );
+        $content = $_POST['content'];
     } else {
         echo 'Please enter some notes';
     }
 
-    $tags = $_POST['post_tags'];
+    //$tags = $_POST['post_tags'];
 
     // ADD THE FORM INPUT TO $new_post ARRAY
     $new_post = array(
@@ -29,7 +30,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     'post_category' =>  $_POST['cat'],
     'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
     'tags_input'    =>  $_POST['tag'],
-    'post_status'   =>  'pending',
+    'post_status'   =>  'publish',
     'post_type' =>  'post',
     );
 
@@ -42,8 +43,8 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     // //REDIRECT TO THE NEW POST ON SAVE
     // $link = get_permalink( $pid );
     // wp_redirect( $link );
-    wp_redirect( 'http://localhost:8888/wordpress/form/' );
-
+    //wp_redirect( 'https://cciecedhpcmsqa.smca.ucf.edu/adapt-cc/data-list' );
+    wp_redirect( get_site_url() . 'adapt-cc/data-list' );
 
 } // END THE IF STATEMENT THAT STARTED THE WHOLE FORM
 
@@ -63,8 +64,9 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
         </div>
 
         <div class="form-group">
-            <label for="content">Contents</label>
-            <textarea class="form-control" id="content" tabindex="15" name="content" cols="80" rows="10"></textarea>
+            <?php wp_editor( "", 'content', $settings = array() ); ?>
+            <!-- <label for="content">Contents</label>
+            <textarea class="form-control" id="content" tabindex="15" name="content" cols="80" rows="10"></textarea> -->
         </div>
 
         <div class="row">
@@ -109,7 +111,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                             'hide_empty' => false,
                     ));
                     foreach($tags as $tag) {     
-                            echo "<input type='checkbox' name='tag[]' value='$tag->term_taxonomy_id' /> ";
+                            echo "<input type='checkbox' name='tag[]' value='$tag->name' /> ";
                             echo $tag->name; 
                             echo '<br>';
                     }

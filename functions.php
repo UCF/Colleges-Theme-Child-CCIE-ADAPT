@@ -23,6 +23,9 @@ function college_theme_child_style() {
       wp_enqueue_script( 'search_database', get_stylesheet_directory_uri() . '/js/page-data.js', array ( 'dtscript' ), 1.1, true);
       wp_localize_script( 'search_database', 'ajax_url', admin_url('admin-ajax.php?action=search_database') );
     }
+    if(strpos(trim( $_SERVER["REQUEST_URI"] , '/' ), 'new-data')){
+      wp_enqueue_script( 'newdatascript', get_stylesheet_directory_uri() . '/js/page-new-data.js', array ( 'jquery' ), true);
+    }
 }
 
 // Ajax Callback  

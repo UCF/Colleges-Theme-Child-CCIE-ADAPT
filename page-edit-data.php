@@ -11,11 +11,12 @@
 if ( isset( $_GET['post'] ) ) {
     $current_post = get_post( $_GET['post']);
     $title = $current_post->post_title;
-    $content = $current_post->post_content;    
+    $content = $current_post->post_content;
 }
-else wp_redirect( 'http://localhost:8888/wordpress/database/' );
 
-if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post") {
+else wp_redirect( '/adapt-cc/database/' );
+
+if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POST['action'] == "update_post" && wp_verify_nonce( $_REQUEST['_wpnonce'], 'update_post' )) {
 
     // Do some minor form validation to make sure there is content
     if (isset ($_POST['title'])) {
@@ -39,14 +40,14 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     'post_category' =>  $_POST['cat'],
     'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
     'tags_input'    =>  $_POST['tag'],
-    'post_status'   =>  'pending',
+    'post_status'   =>  'publish',
     'post_type' =>  'post',
     );
 
     //Update THE POST
     wp_update_post($update_post);
 
-    wp_redirect( 'http://localhost:8888/wordpress/form/' );
+    wp_redirect( 'http://localhost:8888/wordpress/data-list/' );
 
 } // END THE IF STATEMENT THAT STARTED THE WHOLE FORM
 
@@ -61,8 +62,9 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
         </div>
 
         <div class="form-group">
-            <label for="content">Contents</label>
-            <textarea class="form-control" id="content" tabindex="15" name="content" cols="80" rows="10"><?php echo $content; ?></textarea>
+            <?php wp_editor( html_entity_decode($content), 'content', $settings = array() ); ?>
+            <!-- <label for="content">Contents</label>
+            <textarea class="form-control" id="content" tabindex="15" name="content" cols="80" rows="10"><?php //echo $content; ?></textarea> -->
         </div>
 
         <div class="row">
@@ -93,7 +95,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                         ));
 
                         foreach($filter_terms as $term) {
-                        $checked = has_term($term->name, 'filter_terms', $_GET['post'])?'checked':'';     
+                            $checked = has_term($term->name, 'filter_terms', $_GET['post'])?'checked':'';     
                             echo "<input type='checkbox' name='term[]' value='$term->term_taxonomy_id' $checked /> ";
                             echo $term->name; 
                             echo '<br>';
@@ -120,10 +122,10 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                 </div>
             </div>
         </div>
-        <input type="submit" value="Edit Data" tabindex="40" id="submit" class="btn btn-primary" name="submit" />
+        <input type="submit" value="Update Data" tabindex="40" id="submit" class="btn btn-primary" name="submit" />
         <input type="hidden" name="action" value="update_post" />
         
-        <?php wp_nonce_field( 'update-post' ); ?>
+        <?php wp_nonce_field( 'update_post' ); ?>
         </div>    
     </form>
 </div>
