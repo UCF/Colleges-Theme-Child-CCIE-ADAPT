@@ -47,7 +47,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     //Update THE POST
     wp_update_post($update_post);
 
-    wp_redirect( 'http://localhost:8888/wordpress/data-list/' );
+    wp_redirect( '/adapt-cc/data-list/' );
 
 } // END THE IF STATEMENT THAT STARTED THE WHOLE FORM
 
