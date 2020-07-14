@@ -28,7 +28,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     'post_title'    =>  $title,
     'post_content'  =>  $content,
     'post_category' =>  $_POST['cat'],
-    'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
+    //'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
     'tags_input'    =>  $_POST['tag'],
     'post_status'   =>  'publish',
     'post_type' =>  'post',
@@ -36,6 +36,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
 
     //SAVE THE POST
     $pid = wp_insert_post($new_post);
+    wp_set_object_terms($pid, $_POST['term'], 'filter_terms');
 
     //KEEPS OUR COMMA SEPARATED TAGS AS INDIVIDUAL
     // wp_set_post_tags($pid, $_POST['post_tags']);

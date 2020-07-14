@@ -38,7 +38,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     'post_title'    =>  $title,
     'post_content'  =>  $content,
     'post_category' =>  $_POST['cat'],
-    'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
+    //'tax_input'     =>  array( 'filter_terms' => $_POST['term']),
     'tags_input'    =>  $_POST['tag'],
     'post_status'   =>  'publish',
     'post_type' =>  'post',
@@ -46,8 +46,9 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
 
     //Update THE POST
     wp_update_post($update_post);
+    wp_set_object_terms($_GET['post'], $_POST['term'], 'filter_terms');
 
-    wp_redirect( '/adapt-cc/data-list/' );
+    wp_redirect( get_site_url() . '/data-list' );
 
 } // END THE IF STATEMENT THAT STARTED THE WHOLE FORM
 
