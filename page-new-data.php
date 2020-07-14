@@ -44,7 +44,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
     // $link = get_permalink( $pid );
     // wp_redirect( $link );
     //wp_redirect( 'https://cciecedhpcmsqa.smca.ucf.edu/adapt-cc/data-list' );
-    wp_redirect( get_site_url() . 'adapt-cc/data-list' );
+    wp_redirect( get_site_url() . '/data-list' );
 
 } // END THE IF STATEMENT THAT STARTED THE WHOLE FORM
 
