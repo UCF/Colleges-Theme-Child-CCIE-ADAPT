@@ -96,7 +96,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                             'hide_empty' => false,
                         ));   
                         foreach($filter_terms as $term) {     
-                            echo "<input type='checkbox' name='term[]' value='$term->term_taxonomy_id' /> ";
+                            echo "<input type='checkbox' name='term[]' value='$term->name' /> ";
                             echo $term->name; 
                             echo '<br>';
                         }
