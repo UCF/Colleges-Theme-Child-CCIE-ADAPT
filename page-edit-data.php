@@ -97,7 +97,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
 
                         foreach($filter_terms as $term) {
                             $checked = has_term($term->name, 'filter_terms', $_GET['post'])?'checked':'';     
-                            echo "<input type='checkbox' name='term[]' value='$term->term_taxonomy_id' $checked /> ";
+                            echo "<input type='checkbox' name='term[]' value='$term->name' $checked /> ";
                             echo $term->name; 
                             echo '<br>';
                         }
