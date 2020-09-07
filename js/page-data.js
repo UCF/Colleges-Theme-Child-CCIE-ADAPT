@@ -53,7 +53,7 @@ jQuery(document).ready(function(){
                     var row_class = 'odd';
                 }
                 if ( last !== group ) {
-                    $(rows).eq(i).after(
+                    jQuery(rows).eq(i).after(
                         '<tr class="group ' + row_class + '"><td colspan="4">'+ group +'</td></tr>'
                     );
  
