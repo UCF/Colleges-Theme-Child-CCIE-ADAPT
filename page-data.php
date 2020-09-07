@@ -84,7 +84,7 @@
                         <th>Title</th>
                         <th>Strategies</th>
                         <th>Term</th>
-                        <th>Slug</th>
+                        <th>Tags</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -92,7 +92,7 @@
                         <th>Title</th>
                         <th>Category</th>
                         <th>Term</th>
-                        <th>Slug</th>
+                        <th>Tags</th>
                     </tr>
                 </tfoot>
             </table>
