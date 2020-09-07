@@ -44,7 +44,7 @@
                     </div> -->
                 </div>
                 
-                <h6 class="pt-3">Strategies</h6>
+                <h6 class="pt-3">Categories</h6>
                 <?php foreach( $categories as $category ): ?>
                 <div class="form-check">
                     <input type="checkbox" name="categories[]" value="<?php echo $category->term_taxonomy_id; ?>">
@@ -82,9 +82,9 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Strategies</th>
+                        <th>Category</th>
                         <th>Term</th>
-                        <th>Tags</th>
+                        <th>Tag</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -92,7 +92,7 @@
                         <th>Title</th>
                         <th>Category</th>
                         <th>Term</th>
-                        <th>Tags</th>
+                        <th>Tag</th>
                     </tr>
                 </tfoot>
             </table>
