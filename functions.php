@@ -51,11 +51,11 @@ function search_database_callback() {
               'field' => 'term_id',        
               'terms' => $_GET['categories'],               
           ),
-          array(
-              'taxonomy' => 'filter_terms',
-              'field' => 'term_id',        
-              'terms' => $_GET['terms'],               
-          ),
+          // array(
+          //     'taxonomy' => 'filter_terms',
+          //     'field' => 'term_id',        
+          //     'terms' => $_GET['terms'],               
+          // ),
           array(
               'taxonomy' => 'post_tag',
               'field' => 'term_id',        
@@ -81,9 +81,9 @@ function search_database_callback() {
               $category_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
               $nestedData[] = implode(" ", $category_list);
 
-              $terms = get_the_terms(get_the_ID(), 'filter_terms' );
-              $filter_term_list = array_map(function($term){return "<span class='small badge  badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
-              $nestedData[] = implode(" ", $filter_term_list);
+              // $terms = get_the_terms(get_the_ID(), 'filter_terms' );
+              // $filter_term_list = array_map(function($term){return "<span class='small badge  badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);
+              // $nestedData[] = implode(" ", $filter_term_list);
 
               $terms = get_the_terms(get_the_ID(), 'post_tag' );
               $filter_term_list = array_map(function($term){return "<span class='small badge badge-pill badge-info no-transform'>" . $term->name. "</span>"; }, $terms);

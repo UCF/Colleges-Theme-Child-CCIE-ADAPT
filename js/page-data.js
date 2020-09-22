@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
     
-    var groupColumn = 4;
+    var groupColumn = 3;
 
     var datatable = jQuery('#adapt-data').DataTable( {
         //"order": [[ 0, "asc" ]],
@@ -54,7 +54,7 @@ jQuery(document).ready(function(){
                 }
                 if ( last !== group ) {
                     $(rows).eq(i).after(
-                        '<tr class="group ' + row_class + '"><td colspan="4">'+ group +'</td></tr>'
+                        '<tr class="group ' + row_class + '"><td colspan="3">'+ group +'</td></tr>'
                     );
  
                     last = group;
