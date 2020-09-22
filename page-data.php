@@ -52,13 +52,13 @@
                 </div>
                 <?php endforeach; ?>
 
-                <h6 class="pt-3">Filter terms</h6>
-                <?php foreach( $terms as $term ): ?>
+                <!-- <h6 class="pt-3">Filter terms</h6>
+                <?php //foreach( $terms as $term ): ?>
                     <div class="form-check">
-                        <input type="checkbox" name="terms[]" value="<?php echo $term->term_taxonomy_id; ?>">
-                        <?php echo $term->name; ?>
+                        <input type="checkbox" name="terms[]" value="<?php //echo $term->term_taxonomy_id; ?>">
+                        <?php //echo $term->name; ?>
                     </div>
-                <?php endforeach; ?>
+                <?php //endforeach; ?> -->
                 
                 <h6 class="pt-3">Tags</h6>
                 <?php foreach( $tags as $tag ): ?>
