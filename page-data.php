@@ -90,7 +90,7 @@
                 <tfoot>
                     <tr>
                         <th>Title</th>
-                        <th>Category</th>
+                        <th>Strategies</th>
                         <!-- <th>Term</th> -->
                         <th>Tag</th>
                     </tr>
