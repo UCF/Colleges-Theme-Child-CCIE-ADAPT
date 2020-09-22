@@ -69,7 +69,7 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
         </div>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="cat">Category</label><br>
                     <?php //wp_dropdown_categories( 'tab_index=10&taxonomy=category&hide_empty=0' );
@@ -86,11 +86,11 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                      ?>
                 </div>
             </div>
-            <div class="col-md-4">
-                <!-- filter terms -->
+            <!-- filter terms -->
+            <!-- <div class="col-md-4">
                 <div class="form-group">
                     <label for="post_tags">Filter Terms</label><br>
-                    <?php $filter_terms = get_terms( array(
+                    <?php /* $filter_terms = get_terms( array(
                             'taxonomy' => 'filter_terms',
                             'hide_empty' => false,
                         ));
@@ -100,11 +100,11 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) &&  $_POS
                             echo "<input type='checkbox' name='term[]' value='$term->name' $checked /> ";
                             echo $term->name; 
                             echo '<br>';
-                        }
+                        }*/
                      ?>
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <div class="col-md-6">
                 <!-- post tags -->
                 <div class="form-group">
                     <label for="post_tags">Tags</label><br>

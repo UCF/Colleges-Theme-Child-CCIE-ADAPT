@@ -83,16 +83,16 @@
                     <tr>
                         <th>Title</th>
                         <th>Strategies</th>
-                        <th>Term</th>
-                        <th>Slug</th>
+                        <!-- <th>Term</th> -->
+                        <th>Tags</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>Title</th>
-                        <th>Category</th>
-                        <th>Term</th>
-                        <th>Slug</th>
+                        <th>Strategies</th>
+                        <!-- <th>Term</th> -->
+                        <th>Tags</th>
                     </tr>
                 </tfoot>
             </table>
